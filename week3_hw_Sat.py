@@ -45,12 +45,14 @@ def solve():
                 diff[i] -= 1
                 if i + 1 < n and diff[i + 1] <= 0: 
                     ans += 1 
+                if i == n: 
+                    ans += 1
             elif diff[i] < 0: 
                 diff[i] += 1
                 if i + 1 < n and diff[i + 1] >= 0: 
                     ans += 1
-            if i == n: 
-                ans += 1
+                if i == n: 
+                    ans += 1
     print(ans)
 
 if __name__ == "__main__": 
