@@ -59,7 +59,7 @@ if __name__ == "__main__":
     solve()
 
 # Stamp Grid
-# Solution
+
 def solve():
     import sys
     input = sys.stdin.readline
