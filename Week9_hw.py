@@ -100,6 +100,32 @@ def solve():
 
         print(answer)
 
+#Acrobat
+N, M, K = map(int, input().split())
+ 
+cows = []
+for _ in range(N):
+	w, a = map(int, input().split()) #w = weight of the cow, a = how manys cows that have that weight 
+	cows += [w] * a #make list of everysingle cows 
+cows.sort(reverse=True) #reverse the list 
+ 
+answer = 0 #count how many towers are established 
+for _ in range(M): #every iteration to make one tower 
+	remaining_cows = [] # cows that hasn't been placed this iteration 
+	current_cow = 1e100 #arbitrary large number/weight of the last cow 
+	for cow in cows: #iterate through the cow list 
+		if cow + K <= current_cow: #ensures that weight gap between the cows are large enough 
+			current_cow = cow # update the last placed cow to keep track 
+			answer += 1 # answer increase as a cow become part of a tower 
+		else:
+			remaining_cows += [cow] # no more cows can fit into this tower so save it for next iteration 
+ 
+	if len(remaining_cows) == 0: # no more cows left so we break out of the loop 
+		break
+	cows = remaining_cows # so that we update the list for the next iteration so we don't count any cows repetively 
+ 
+print(answer) # print answer after the iteration 
+
 
 if __name__ == "__main__":
     solve()
