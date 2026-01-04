@@ -1,0 +1,88 @@
+Time complexity 
+    - Big-O notation
+        - gives an upper bound of the complexity in the worst case, helping to quatify 
+          performance as the input size becoms arbitrarily large
+    - O(log n) -> time complexity where time required increases very slowly as the input size(n) grows 
+    - O(√n) -> time complexity where time required is square root of the n 
+    - O(n log n) -> time complexitu where O(log n) will appear n times
+    - O(n!) -> means factorial time complexity where the number of operations is proportional to the factorial of the input size
+
+List comprehension/nested list 
+    - m = [[c for c in range(5)] for r in range(2)]
+      m = [[0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]
+
+    - finding odd through list comprehension in nested list 
+        - m = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+            odds = [e for r in m for e in r if e % 2 != 0] 
+            print(odds) 
+            output = [1, 3, 5, 7, 9]
+    
+Memory allocation 
+    - a MB is capable of storing 10^6 in bytes 
+    - Divde by the size in bytes of an int(4) is 356 * 10^6 / 4 = 64 * 10^6
+
+Shell game
+    n = int(input())
+    swaps = [[input()] for i in range(n)]
+    guesses
+    - for i in range(n): #looping the amount of swaps to follow and tract movement of the pebbles 
+        guess = 0 
+        a, b, g = swaps.pop(0) 
+        if pebble not in any of the shells: # if pebble not found the shell that has pebble does not show up in this round so move on 
+            continue 
+        if pebble in one of the shells: # if pebble found swap to the other shell and see if the cow got it right or not 
+            if in shell a: 
+                pebble moves to shell b 
+                pebble_location = b
+            else: 
+                pebble moves to shell a
+                pebble_location = a 
+        if pebble_location == g: 
+            guess += 1 
+        guesses.append(guess) # save the guess, so that it is possible to find the highest guesses after all the iteration 
+    print(max(guesses)) #print highest amount of guesses 
+
+        the code is wrong its suppose to see the value difference when the pebble starts in 1, 2, or 3
+
+    - compared to the solution 
+        - the solution checks the current pebble location through marking them in the list, unlike me who used 1, 2, or 3 to manage them 
+        - uses counter which shows the answer for each 1, 2, 3 and later on prints the maximum answers 
+        
+Mixing Milk 
+    capacity = [] 
+    milk = [] 
+    for i in range(3): 
+        c, m = input().split().strip()
+        capacity.append(c)
+        milk.append(m)
+    for i in range(2): 
+       if capacity[i + 1] > milk[i] + milk[i + 1]: 
+            milk[i + 1] = milk[i] + milk[i + 1]
+        else: 
+            milk[i] = [milk[i] + milk[i + 1]] - capacity[i + 1]
+            milk[i + 1] = capacity[i + 1]
+    
+    capacity = capacity[2] + capacity[0:1]
+    milk = milk[2] + milk + capacity[0:1] 
+
+    for i in range(2): 
+        if capacity[i + 1] > milk[i] + milk[i + 1]: 
+            milk[i + 1] = milk[i] + milk[i + 1]
+        else: 
+            milk[i] = [milk[i] + milk[i + 1]] - capacity[i + 1]
+            milk[i + 1] = capacity[i + 1]
+    
+    for i in milk:
+        print(i)
+
+    - solution 
+        - just iterated through all 100 pours 
+        - to manage buckets it used the remainder of the i value(which is value between 0 - 99) after deviding it by number of buckets; 3 and for the next bucket they just added 1  
+        - and did min to find the liminting factor and update the milk value by either capacity or the amount of milk 
+        - update the milk value of each bucket afterwords
+    
+
+
+
+
+        
